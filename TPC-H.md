@@ -8,7 +8,7 @@ In order to convert the TPC benchmark data in a generic way (reproducible with o
 - SuppParts
 - Orders
 - LineItems
-- (For the sake of simplicity, we excluded nations and regions that were inlined in customers and suppliers)
+- (For the sake of simplicity, we excluded nations and regions that were "inlined" in customers and suppliers)
 
 Then, for each table, the primary keys were converted to dimensions, and the other SQL attributes were converted to reportable concepts (primary items).
 
@@ -68,19 +68,106 @@ can be mapped to the following facts:
 
 ## Queries
 
-1. Return a fact table by filtering the set of customers. This should show that we can build a user-defined hypercube
+Given the NoLAP schema described above, one can build plenty of useful queries.
 
-2. Execute one of the TPC-H queries efficiently. This should show that it’s possible and how. Ideally with a nice looking and easy to understand query
+### Custom Hypercube
+For example, a user could define a custom hypercube (CustomerNation and CustomerName) on the set of facts and dicing the cube by picking specific values for some dimensions (CustomerNation is either PERU or GERMANY).
 
-http://tpchd.xbrl.io/html/query.jq?id=Q1
+```xquery
+for $fact in facts:facts-for({
+    Filter: {
+        "Profiles.TPC-H.tpch:Nation": [ "PERU", "GERMANY" ]
+    },
+    Hypercube: hypercubes:dimensionless-hypercube({
+        Concepts: ["tpch:CustomerName"]
+    })
+})
+order by $fact.Profiles."TPC-H"."tpch:Nation"
+return {|
+    $fact.Aspects,
+	{ "tpch:Nation" : "Profiles.TPC-H.tpch:Nation" }
+    { "tpch:CustomerName" : $fact.Value }
+|}
+```
 
-http://tpchd.xbrl.io/html/query.jq?id=Q3
+This query returns a table of facts (aka as fact table) containing the names of all customers of PERU and GERMANY.
+It is important to note, that such a query is very similar (and equally expressive) to an MDX query (MDX is a query language for OLAP databases).
 
-http://tpchd.xbrl.io/html/query.jq?id=Q9
+### Static Hypercube
 
-## Spreadsheet-like Reports
-1. Create a report (ideally html) for all orders (including nested line items) for a particular set of customers. This should show that we can create a spreadsheet like experience with reports that “live” in the database.
-2. Create a report that contains computations. For example, aprofit report for a particular customer
-- Revenue = l_extendedprice * (1-l_discount)  (see Query Q3)
-- Profit = Revenue - (ps_supplycost*l_quantity) (see Query Q9)
-This should show that we can compute computations in the database (specified by the business user) that would otherwise be done in the spreadsheet.
+Components are metadata (living in the database) on top of facts.
+Specifically, a component describes a hypercube.
+For example, the components collection of the TPC-H database contains a hypercube that involves all possible concepts of customers (e.g. tpch:CustomerName, tpch:CustomerAddress, tpch:CustomerPhone, etc.).
+Similarly to the custom hypercube query above, the hypercube of this component can be used to retrieve a dice of the cube.
+
+```xquery
+let $component := components:components()[$$.Role = "http://www.tpc.org/tpch/customers"]
+let $hypercube := hypercubes:hypercubes-for-components($component)
+for $fact in facts:facts-for({
+    Filter: {
+        "Profiles.TPC-H.tpch:Nation": [ "PERU", "GERMANY" ]
+    },
+    Hypercube: $hypercube
+})
+return {|
+    $fact.Aspects,
+    { Value : $fact.Value }
+|}
+```
+
+This query returns all customer dimensions for the selected set of customers, i.e. the ones from Peru or Germany.
+
+### Analytics using 28.io
+
+Having the capability of dicing a customer hypercube, we can use JSONiq to build analytical queries such
+as the following that is inspired by TPC-H Query 1.
+
+```xquery
+let $hypercube := hypercubes:user-defined-hypercube({
+    "xbrl:Period": {
+        Domain: [ "1996-01-02T00:00:00Z" ]
+    },
+    "tpch:LineNumber": {},
+    "xbrl:Concept": {
+        Domain: ["tpch:LineItemShipDate","tpch:LineItemReturnFlag","tpch:LineItemLineStatus",
+                 "tpch:LineItemQuantity","tpch:LineItemExtendedPrice","tpch:LineItemDiscount","tpch:LineItemTax"]
+    }
+})
+let $covered-aspects := ($facts:CONCEPT, $facts:UNIT)
+let $lineitems :=
+    for $facts in hypercubes:facts($hypercube)
+    group by $canonical-filter-string := facts:canonically-serialize-object($facts.$facts:ASPECTS, $covered-aspects)
+    return {
+        linenumber: $facts[1]."tpch:LineNumber",
+        shipdate: $facts[$$.$facts:ASPECTS.$facts:CONCEPT eq "tpch:LineItemShipDate"].Value,
+        returnflag: $facts[$$.$facts:ASPECTS.$facts:CONCEPT eq "tpch:LineItemReturnFlag"].Value,
+        linestatus: $facts[$$.$facts:ASPECTS.$facts:CONCEPT eq "tpch:LineItemLineStatus"].Value,
+        quantity: $facts[$$.$facts:ASPECTS.$facts:CONCEPT eq "tpch:LineItemQuantity"].Value,
+        extprice : $facts[$$.$facts:ASPECTS.$facts:CONCEPT eq "tpch:LineItemExtendedPrice"].Value,
+        discount: $facts[$$.$facts:ASPECTS.$facts:CONCEPT eq "tpch:LineItemDiscount"].Value,
+        tax :$facts[$$.$facts:ASPECTS.$facts:CONCEPT eq "tpch:LineItemTax"].Value
+    }
+for $lineitem in $lineitems
+group by $returnflag := $lineitem.returnflag,
+         $linestatus := $lineitem.linestatus
+order by $returnflag, $linestatus
+return {
+    returnflag : $returnflag,
+    linestatus : $linestatus,
+    sum_qty : sum($lineitem.quantity),
+    sum_base_price : sum($lineitem.extprice),
+    sum_disc_price : sum($lineitem ! ($$.extprice * (1 - $$.discount))),
+    sum_charge : sum($lineitem ! ($$.extprice * (1 - $$.discount) * (1 + $$.tax))),
+    avg_qty : avg($lineitem.quantity),
+    avg_extendedprice : avg($lineitem.extprice),
+    avg_disc : avg($lineitem.discount),
+    count_order : count($lineitem)
+}
+```
+
+This query builds a customer hypercube including seven dimensions of line items.
+Further, it filters the facts in this hypercube by fixing the period to "1996-01-02T00:00:00Z".
+The resulting facts are then grouped as they belong together (i.e. having the primary key).
+Those facts are then grouped by their values for tpch:LineItemReturnFlag and tpch:LineItemLineStatus.
+The result is a set of JSON objects that contains aggregates (sum, avg, and count) for several
+dimension values.
