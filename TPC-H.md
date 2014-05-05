@@ -26,13 +26,15 @@ In XBRL, there are dimensions that are not technically required by NoLAP, but th
 
 Concretely, the following row (represented as flat JSON)
 
-    {
-      "PS_SUPPKEY" : "Supplier#000010000", 
-      "PS_PARTKEY" : 1, 
-      "PS_SUPPLYCOST" : 984.93, 
-      "PS_AVAILQTY" : 1807, 
-      "PS_COMMENT" : "egular requests sleep quickly across the regular theodolites. ironic ideas affix regular pains. blithely re"
-    }
+```json
+{
+  "PS_SUPPKEY" : "Supplier#000010000", 
+  "PS_PARTKEY" : 1, 
+  "PS_SUPPLYCOST" : 984.93, 
+  "PS_AVAILQTY" : 1807, 
+  "PS_COMMENT" : "egular requests sleep quickly across the regular theodolites. ironic ideas affix regular pains. blithely re"
+}
+```
 
 can be mapped to the following facts:
 
