@@ -38,6 +38,7 @@ Concretely, the following row (represented as flat JSON)
 
 can be mapped to the following facts:
 
+```json
     {
      Aspects: {
         "xbrl:Concept": "tpch:SupplierPartAvailableQuantity",
@@ -67,6 +68,7 @@ can be mapped to the following facts:
       },
       Value: "egular requests sleep quickly across the regular theodolites. ironic ideas affix regular pains. blithely re"
     }
+```
 
 ## Queries
 
