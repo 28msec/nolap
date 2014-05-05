@@ -86,6 +86,7 @@ The data model contains two main types of (relational) entities: facts and compo
 
 According to the definition above, a fact is a single, observable, piece of information of the sort that can be contained within a report. For example, the name of a customer, the account balance of a customer, or the status of a particular order. Here is an example, of a fact in its JSON representation suitable for storing in a NoSQL database such as MongoDB.
 
+```json
     {
       Aspects: {
         "xbrl:Concept": "tpch:OrderStatus",
@@ -97,6 +98,7 @@ According to the definition above, a fact is a single, observable, piece of info
       Type: "String",
       Value: "O"
     }
+```
     
 This fact is the status of an order “O” (xbrl:Concept) with key 1. The order was placed by a particular customer (*xbrl:Entity*) on an order date (*xbrl:Period*). The type of the value is string and there is no particular unit for the value.
 
@@ -116,6 +118,7 @@ For example, a component could describe hypercube of all the customer informatio
 
 This is how such a component can look like. See how the arborescent capabilities of SQL allow a standalone representation of a hypercube, its dimension and their allowed values.
 
+```json
     {
       "_id" : "53666983D07EB839D4D86D70", 
       "Archive" : null, 
@@ -188,6 +191,7 @@ This is how such a component can look like. See how the arborescent capabilities
         }
       }
     }
+```
 
 Another example of a component is the list of all orders and a set of information of the corresponding line items. Such a component can be used to build an order report for a particular customer.
 
