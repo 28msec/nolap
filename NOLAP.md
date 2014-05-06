@@ -201,7 +201,7 @@ Reports can be created using report schemas. Report schemas look very much like 
 ### Server-side pivoting
 Queries can be performed using hypercubes, but there is an even more generic way of querying the facts pool, using the XBRL Table Linkbase Specification.
 
-While a hypercube only filters for facts (roll up, drill down) and outputs them in a raw form called a fact table, table linkbases allow fine-tuning to slide. dice and finally nicely present the data to a human user.
+While a hypercube only filters for facts (roll up, drill down) and outputs them in a raw form called a fact table, table linkbases allow fine-tuning to slide, dice, and finally nicely present the data to a human user.
 
 A *definition model* can be used to draw the skeleton of a table (a classical spreadsheet like Excel if you want).
 
