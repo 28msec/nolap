@@ -90,19 +90,43 @@ order by $fact.Profiles."TPC-H"."tpch:Nation"
 return {|
     $fact.Aspects,
 	{ "tpch:Nation" : "Profiles.TPC-H.tpch:Nation" }
-    { "tpch:CustomerName" : $fact.Value }
+    { "Value" : $fact.Value }
 |}
 ```
 
 This query returns a table of facts (aka as fact table) containing the names of all customers of PERU and GERMANY.
 It is important to note, that such a query is very similar (and equally expressive) to an MDX query (MDX is a query language for OLAP databases).
 
+Here is a an example of the result (as CSV) being returned by the query:
+
+```
+xbrl:Concept,xbrl:Entity,xbrl:Period,xbrl:Unit,tpch:Nation,Value
+tpch:CustomerName,Customer#000098825,forever,pure,GERMANY,Customer#000098825
+tpch:CustomerName,Customer#000099195,forever,pure,GERMANY,Customer#000099195
+tpch:CustomerName,Customer#000099126,forever,pure,GERMANY,Customer#000099126
+tpch:CustomerName,Customer#000099117,forever,pure,GERMANY,Customer#000099117
+tpch:CustomerName,Customer#000099058,forever,pure,GERMANY,Customer#000099058
+tpch:CustomerName,Customer#000099025,forever,pure,GERMANY,Customer#000099025
+tpch:CustomerName,Customer#000098962,forever,pure,GERMANY,Customer#000098962
+tpch:CustomerName,Customer#000098918,forever,pure,GERMANY,Customer#000098918
+tpch:CustomerName,Customer#000098917,forever,pure,GERMANY,Customer#000098917
+tpch:CustomerName,Customer#000098866,forever,pure,GERMANY,Customer#000098866
+tpch:CustomerName,Customer#000098849,forever,pure,GERMANY,Customer#000098849
+tpch:CustomerName,Customer#000098836,forever,pure,GERMANY,Customer#000098836
+tpch:CustomerName,Customer#000099216,forever,pure,GERMANY,Customer#000099216
+tpch:CustomerName,Customer#000098815,forever,pure,GERMANY,Customer#000098815
+tpch:CustomerName,Customer#000098781,forever,pure,GERMANY,Customer#000098781
+tpch:CustomerName,Customer#000098737,forever,pure,GERMANY,Customer#000098737
+tpch:CustomerName,Customer#000098724,forever,pure,GERMANY,Customer#000098724
+tpch:CustomerName,Customer#000098699,forever,pure,GERMANY,Customer#000098699
+```
+
 ### Static Hypercube
 
 Components are metadata (living in the database) on top of facts.
 Specifically, a component describes a hypercube.
 For example, the components collection of the TPC-H database contains a hypercube that involves all possible concepts of customers (e.g. tpch:CustomerName, tpch:CustomerAddress, tpch:CustomerPhone, etc.).
-Similarly to the custom hypercube query above, the hypercube of this component can be used to retrieve a dice of the cube.
+Similarly to the custom hypercube query above, the hypercube of this component can be used to retrieve a die of the cube.
 
 ```xquery
 let $component := components:components()[$$.Role = "http://www.tpc.org/tpch/customers"]
@@ -120,6 +144,32 @@ return {|
 ```
 
 This query returns all customer dimensions for the selected set of customers, i.e. the ones from Peru or Germany.
+
+Here is a subset of the result converted to CSV:
+
+```
+xbrl:Concept,xbrl:Entity,xbrl:Period,xbrl:Unit,Value
+tpch:CustomerRegion,Customer#000000062,forever,pure,EUROPE
+tpch:CustomerRegion,Customer#000000071,forever,pure,EUROPE
+tpch:CustomerRegion,Customer#000000093,forever,pure,EUROPE
+tpch:CustomerRegion,Customer#000000119,forever,pure,EUROPE
+tpch:CustomerNation,Customer#000000062,forever,pure,GERMANY
+tpch:CustomerNation,Customer#000000071,forever,pure,GERMANY
+tpch:CustomerNation,Customer#000000093,forever,pure,GERMANY
+tpch:CustomerNation,Customer#000000119,forever,pure,GERMANY
+tpch:AccountBalance,Customer#000000062,forever,USD,595.61
+tpch:AccountBalance,Customer#000000071,forever,USD,-611.19
+tpch:AccountBalance,Customer#000000093,forever,USD,2182.52
+tpch:AccountBalance,Customer#000000119,forever,USD,3930.35
+tpch:CustomerName,Customer#000000062,forever,pure,Customer#000000062
+tpch:CustomerName,Customer#000000071,forever,pure,Customer#000000071
+tpch:CustomerName,Customer#000000093,forever,pure,Customer#000000093
+tpch:CustomerName,Customer#000000119,forever,pure,Customer#000000119
+tpch:CustomerComment,Customer#000000062,forever,pure,kly special dolphins. pinto beans are slyly. quickly regular accounts are furiously a
+tpch:CustomerComment,Customer#000000071,forever,pure,"g courts across the regular, final pinto beans are blithely pending ac"
+tpch:CustomerComment,Customer#000000093,forever,pure,press deposits. carefully regular platelets r
+tpch:CustomerComment,Customer#000000119,forever,pure,express ideas. blithely ironic foxes thrash. special acco
+```
 
 ### Analytics using 28.io
 
