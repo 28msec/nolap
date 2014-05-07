@@ -13,7 +13,7 @@ At runtime, you can bring your own hypercube (or even a complete report schema) 
 The "curse of dimensionality" is often used as a blanket excuse for not dealing with high-dimensional data. 
 With NoLAP, you can efficiently work with such data.
 For example, MOLAP (and also ROLAP because of its table explosion) do not scale up well with the number of dimensions.
-With NoLAP, it does not matter how many dimensions you have.
+With NoLAP, it does not matter how many dimensions you have. The data (measures) is organized in one single collection, with optionally one metadata collection that contains dimension information.
 Because of NoSQL's heterogeneity, there is virtually zero performance penalty.
 You can even add more as you add new measures and hypercubes.
 
