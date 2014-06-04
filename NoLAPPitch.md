@@ -98,7 +98,7 @@ Somehow, sparseness marries incredibly well with NoSQL.
 
 ### On the fly hypercubes
 
-Given one hypercube documents (see point 2 above), you can, with a single query, get all the cells and export them to Excel. In other words, you support no less than traditional approaches. With indexes on the most used dimensions (like compound key indices on MongoDB), performance allows you to do this in real time. In "Web site visiting" real time, i.e., below the treshold acceptable by human visitors.
+Given one hypercube documents (see point 2 above), you can, with a single query, get all the cells and export them to Excel. In other words, you support no less than traditional approaches. With indexes on the most used dimensions (like compound key indices on MongoDB), performance allows you to do this in real time. In "Web site visiting" real time, i.e., below the threshold acceptable by human visitors.
 
 However, since these hypercubes documents are completely uncorrelated to the huge collection of cells, nothing prevents you from *designing your own hypercubes*, live, on the fly, and querying the fact collection.
 
