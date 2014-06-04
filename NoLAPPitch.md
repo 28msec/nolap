@@ -1,5 +1,7 @@
 # NoLAP one pager (for Eliot)
 
+This document introduces NoLAP by beginning with how competitors deal with XBRL data, like filings of US companies to the SEC, shows the limits of traditional approaches, and shows why NoLAP goes beyond these limits.
+
 ## Components, tables, Excel and OLAP
 
 Traditionally, the set of all SEC filings is treated as a set of components. For example, a component is Coca Cola's
