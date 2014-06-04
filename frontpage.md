@@ -1,6 +1,6 @@
 # 28msec Competitive Advantages
 
-## Business Spreadsheets The Entire Universe Won't Even Fit In
+## Business Spreadsheets The Entire Universe Won't Fit In
 Everybody loves Excel. Tables are so nice to use and easy to understand.
 But real-life data is more complex than a dense, flat table.
 We support sparse, highly-dimensional spreadsheets with more cells than atoms in the visible universe.
