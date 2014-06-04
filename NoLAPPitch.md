@@ -65,25 +65,26 @@ With NoLAP, we go the whole way. We merge all SEC components' hypercubes to a si
 How big is this hypercube? To give you an idea, just looking at the DOW 30 (that's barely 0.5% of the filings),
 you have 811 dimensions, and in average each of these has 38 values. That's a hypercube of 38^811 cells. That's a 1 followed by like 1200 zeros. By orders of magnitude more than atoms in the universe. Of course, this hypercube is extremely sparse -- otherwise it would be physically infeasible to store it.
 
-If you attempt to store this hypercube in a ROLAP database, you'll quickly reach limits: 800 dimension tables, and a central table with 800+ columns -- with plenty of empty cells: 99.5% of empty cells. Worse: if you want to now go ahead and import all filings, not only will be cumbersome to create new tables and migrate the central one, but this will make explode your SQL database.
+If you attempt to store this hypercube in a ROLAP database, you'll quickly reach limits: 800 dimension tables, and a central table with 800+ columns -- with plenty of empty cells: 99.5% of empty cells. Worse: if you want to now go ahead and import all filings, not only will be cumbersome to create new tables and migrate the central one, but this will make your SQL database explode.
 
 ### NoSQL is a perfect fit for sparseness
 
-Somehow, sparseness marries very well with NoSQL.
+Somehow, sparseness marries incredibly well with NoSQL.
 
-1. NoSQL means heteroneous data. That's perfect: for each cell, you only need to specify the dimensions it lives in. Different cells can have different dimensions. The big hypercube is just one single NoSQL collection of heterogeneous cells.
+1. NoSQL means *heteroneous* data. That's perfect: for each cell, you only need to specify the dimensions it lives in. Different cells can have different dimensions. *The big hypercube is just one single NoSQL collection of heterogeneous cells*.
 
-2. NoSQL means arborescent data. That's perfect: dimension values (example: concepts) are organized in hierarchies. For example, current assets and noncurrent assets are children of assets. A hypercube's metadata, like, say, Coca Cola's balance sheet for FY 2014, can be stored in a single document. No need to join acros any tables, everything is in the document.
+2. NoSQL means *arborescent* data. That's perfect: dimension values (example: concepts) are organized in hierarchies. For example, current assets and noncurrent assets are children of assets. A hypercube's metadata, like, say, Coca Cola's balance sheet for FY 2014, can be stored in a single document. *No need to join* acros any tables, everything is in the document.
 
 ### On the fly hypercubes
 
-Given one hypercube documents (see point 2 above), you can, with a single query, get all the cells and export them to Excel. In other words, you support no less than traditional approaches.
+Given one hypercube documents (see point 2 above), you can, with a single query, get all the cells and export them to Excel. In other words, you support no less than traditional approaches. With indexes on the most used dimensions, performance allows you to do this in real time. In "Web site visiting" real time, i.e., below the treshold acceptable by human visitors.
 
-However, since these hypercubes documents are completely uncorrelated to the huge collection of cells, nothing prevents you from designing your own hypercubes, live, on the fly, and querying the fact collection.
+However, since these hypercubes documents are completely uncorrelated to the huge collection of cells, nothing prevents you from *designing your own hypercubes*, live, on the fly, and querying the fact collection.
 
-What own hypercube? Well, for a start, let's take
+What kind of own hypercube? Well, for example, let's take these three dimensions:
 1. Concepts: assets, income and revenues
 2. Companies: Samsung, Apple
 3. Periods: FY 2013, FY 2014
 
-That's it. Query the big collection, get the cells, export in Excel. Here you are.
+That's it. Query the big collection, get the cells, export in Excel. Here you are. It took you maybe 1 minute to design the hypercube and 5 seconds to export as a csv. You're already adding formulas and getting to the meat, while a user of a traditional approach will have exported 4 csv files, one for each filing, and is still copying and pasting cells around, trying to merge them manually into a single Excel spreadsheet.
+
