@@ -22,7 +22,16 @@ for one or two extra dimensions.
 ### Excel
 
 4,000 cells. Nothing Excel can't do.
-Each one of these components can be exported in a csv format on top of which Excel allows you to pivot,
+Each one of these components can be exported in a csv format like so
+
+| Concept  | Period | Value | Unit |
+|----------|--------|-------|------|
+| Assets   | 2013   | 1     | B$   |
+| Assets   | 2014   | 2     | B$   |
+| Revenues | 2013   | 1     | M$   |
+| Revenues | 2014   | 2     | M$   |
+
+on top of which Excel allows you to pivot,
 slice and dice with these 2, 3 or 4 dimensions.
 
 However, you're stuck in a filing. You can't compare across components, let alone across fiscal years or companies. Why?
