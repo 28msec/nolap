@@ -12,13 +12,13 @@ balance sheet for Q1 2014. Another component is the statement of income of Amazo
 Each of these components is a dense table with few dimensions. Typically just 2, sometimes 3 or 4.
 Typically:
 
-- one of the dimensions is the name of the reported concept (assets, revenues, etc) and there's 1 to 100 of them.
+- one of the dimensions is the name of the reported concept (assets, liabilities, etc) and there's 1 to 100 of them.
 - another is the period, there are typically 1 to 4 of them.
 
-|          | 2013 | 2014 |
-|----------|------|------|
-| Assets   |  1B$ | 2B$  |
-| Revenues |  1M$ | 2M$  |
+|             | 2013 | 2014 |
+|-------------|------|------|
+| Assets      |  2B$ | 4B$  |
+| Liabilities |  1B$ | 2B$  |
 
 You can quickly calculate that, hence, a component's table typically has between 1 and 400 cells. Let's say 4,000 to account
 for one or two extra dimensions.
@@ -28,12 +28,12 @@ for one or two extra dimensions.
 4,000 cells. Nothing Excel can't do.
 Each one of these components can be exported in a csv format like so
 
-| Concept  | Period | Value | Unit |
-|----------|--------|-------|------|
-| Assets   | 2013   | 1     | B$   |
-| Assets   | 2014   | 2     | B$   |
-| Revenues | 2013   | 1     | M$   |
-| Revenues | 2014   | 2     | M$   |
+| Concept     | Period | Value | Unit |
+|---------===-|--------|-------|------|
+| Assets      | 2013   | 2     | B$   |
+| Assets      | 2014   | 4     | B$   |
+| Liabilities | 2013   | 1     | B$   |
+| Liabilities | 2014   | 2     | B$   |
 
 on top of which Excel allows you to pivot,
 slice and dice with these 2, 3 or 4 dimensions.
