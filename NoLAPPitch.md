@@ -41,8 +41,11 @@ the same thing.
 ### OLAP
 
 Since it's a hypercube, this data can also be stored in an OLAP store. For example, in ROLAP, you would have a couple of
-tables organized in a snowflake. One table with the list of concepts. One table with the list of periods. And a central table
-that references each of the first two, together with a value for each set of foreign keys.
+tables organized in a snowflake:
+
+- One table with the list of concepts.
+- One table with the list of periods.
+- And a central table that references each of the first two, together with a value for each set of foreign keys.
 
 ## NoLAP's business value
 
