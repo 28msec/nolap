@@ -81,7 +81,7 @@ By orders of magnitude more than atoms in the universe. Of course, this hypercub
 
 ### Too much for SQL
 
-If you attempt to store this hypercube in a ROLAP database, you'll quickly reach limits: 800 dimension tables, and a central table with 800+ columns -- even if you only store the filled cells, that's still 99% of SQL NULLs for unused dimensions. Worse: if you want to now go ahead and import all filings, not only will it be cumbersome to create new tables and migrate the central one, but this will make your SQL database explode.
+If you attempt to store this hypercube in a ROLAP database, you'll quickly reach limits: 800 dimension tables, and a central table with 800+ columns -- even if you only store the filled cells, that's still 99% of SQL NULLs for unused dimensions. Worse: if you want to now go ahead and import all filings (thousands of companies), not only will it be cumbersome to create new dimension tables and migrate the central one to more columns, but this will make your SQL database explode.
 
 ### NoSQL is a perfect fit for sparseness
 
