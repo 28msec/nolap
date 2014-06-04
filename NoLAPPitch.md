@@ -82,6 +82,7 @@ Given one hypercube documents (see point 2 above), you can, with a single query,
 However, since these hypercubes documents are completely uncorrelated to the huge collection of cells, nothing prevents you from *designing your own hypercubes*, live, on the fly, and querying the fact collection.
 
 What kind of own hypercube? Well, for example, let's take these three dimensions:
+
 1. Concepts: assets, income and revenues
 2. Companies: Samsung, Apple
 3. Periods: FY 2013, FY 2014
