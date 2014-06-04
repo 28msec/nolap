@@ -1,6 +1,6 @@
 # NoLAP one pager (for Eliot)
 
-This document introduces NoLAP by beginning with how competitors deal with XBRL data, like filings of US companies to the SEC, shows the limits of traditional approaches, and shows why NoLAP goes beyond these limits.
+This document introduces NoLAP by beginning with how competitors deal with XBRL data, like filings of US companies to the SEC, shows the limits of traditional approaches, and shows why and how NoLAP goes beyond these limits.
 
 ## Components, tables, Excel and OLAP
 
