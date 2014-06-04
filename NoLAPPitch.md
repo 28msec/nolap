@@ -1,4 +1,4 @@
-# NoLAP one pager
+# NoLAP one pager (for Eliot)
 
 ## Components, tables, Excel and OLAP
 
@@ -50,7 +50,20 @@ If you attempt to store this hypercube in a ROLAP database, you'll quickly reach
 ### NoSQL is a perfect fit for sparseness
 
 Somehow, sparseness marries very well with NoSQL.
-1. NoSQL means heteroneous data. That's perfect: for each cell, you only need to specify the dimensions it lives in. Different cells can have different dimensions.
-2. NoSQL means arborescent data. That's perfect: dimension values (example: concepts) are organized in hierarchies. For example, current assets and noncurrent assets are children of assets. A hypercube's metadata can be stored in a single document. No need to join acros any tables, everything is in the document.
 
+1. NoSQL means heteroneous data. That's perfect: for each cell, you only need to specify the dimensions it lives in. Different cells can have different dimensions. The big hypercube is just one single NoSQL collection of heterogeneous cells.
 
+2. NoSQL means arborescent data. That's perfect: dimension values (example: concepts) are organized in hierarchies. For example, current assets and noncurrent assets are children of assets. A hypercube's metadata, like, say, Coca Cola's balance sheet for FY 2014, can be stored in a single document. No need to join acros any tables, everything is in the document.
+
+### On the fly hypercubes
+
+Given one hypercube documents (see point 2 above), you can, with a single query, get all the cells and export them to Excel. In other words, you support no less than traditional approaches.
+
+However, since these hypercubes documents are completely uncorrelated to the huge collection of cells, nothing prevents you from designing your own hypercubes, live, on the fly, and querying the fact collection.
+
+What own hypercube? Well, for a start, let's take
+1. Concepts: assets, income and revenues
+2. Companies: Samsung, Apple
+3. Periods: FY 2013, FY 2014
+
+That's it. Query the big collection, get the cells, export in Excel. Here you are.
