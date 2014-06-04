@@ -1,4 +1,6 @@
-# NoLAP elevator pitch (for Eliot)
+# NoLAP elevator pitch for Eliot
+
+by Ghislain, 28msec Zurich.
 
 This document introduces NoLAP by beginning with how competitors deal with XBRL data, like filings of US companies to the SEC, shows the limits of traditional approaches, and shows why and how NoLAP goes beyond these limits.
 
