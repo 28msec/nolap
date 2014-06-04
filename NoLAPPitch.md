@@ -52,10 +52,13 @@ tables organized in a snowflake:
 Let's go back to the SEC filings example.
 
 People want to compare across periods. They want to know whether Google is growing.
+
 People want to compare across companies. They want to know whether Samsung is catching up with Apple
 and when it might take over.
 
 In order to do such comparison, you need to "merge" all the hypercubes (say, Apple's balance sheet and Samsung's balance sheet, for the years 2013 and 2014) and do something useful with this data in Excel.
+
+### One single, big big big hypercube
 
 With NoLAP, we go the whole way. We merge all SEC components' hypercubes to a single one. All of them.
 
