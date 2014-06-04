@@ -83,7 +83,7 @@ If you attempt to store this hypercube in a ROLAP database, you'll quickly reach
 
 Somehow, sparseness marries incredibly well with NoSQL.
 
-1. NoSQL means *heteroneous* data. That's perfect: for each cell, you only need to specify the dimensions it lives in. Different cells can have different dimensions. *The big hypercube is just one single NoSQL collection of heterogeneous cells*, like
+1. NoSQL means *heterogeneous* data. That's perfect: for each cell, you only need to specify the dimensions it lives in. Different cells can have different dimensions. *The big hypercube is just one single NoSQL collection of heterogeneous cells*, like
 
 
     {
@@ -94,7 +94,7 @@ Somehow, sparseness marries incredibly well with NoSQL.
     }
 
 
-2. NoSQL means *arborescent* data. That's perfect: dimension values (example: concepts) are organized in hierarchies. For example, current assets and noncurrent assets are children of assets. A hypercube's metadata, like, say, Coca Cola's balance sheet for FY 2014, can be stored in a single document. *No need to join* acros any tables, everything is in the document.
+2. NoSQL means *arborescent* data. That's perfect: dimension values (example: concepts) are organized in hierarchies. For example, current assets and noncurrent assets are children of assets. A hypercube's metadata, like, say, Coca Cola's balance sheet for FY 2014, can be stored in a single document. *No need to join* across any tables, everything is in the document.
 
 ### On the fly hypercubes
 
