@@ -15,5 +15,5 @@ There's something that will prevent you from leaving us though: you won't even h
 XBRL, and yet you'll be impressed with what we can do with XBRL that others can't.
 
 ## Know Faster Than The Market
-Fiscal reports filed, say, to the SEC? Just another big spreadsheet for us. Build your own views, add your formulas in
+Fiscal reports filed, say, to the SEC -- all companies, all times? Just another big spreadsheet for us. Build your own views, add your formulas in
 no time. Easily compare across filings and get valuable knowledge faster than others.
