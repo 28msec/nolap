@@ -1,4 +1,4 @@
-# NoLAP elevator pitch for Eliot
+# NoLAP elevator pitch
 
 by Ghislain, 28msec Zurich.
 
