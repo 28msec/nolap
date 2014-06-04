@@ -65,7 +65,7 @@ With NoLAP, we go the whole way. We merge all SEC components' hypercubes to a si
 How big is this hypercube? To give you an idea, just looking at the DOW 30 (that's barely 0.5% of the filings),
 you have 811 dimensions, and in average each of these has 38 values. That's a hypercube of 38^811 cells. That's a 1 followed by like 1200 zeros. By orders of magnitude more than atoms in the universe. Of course, this hypercube is extremely sparse -- otherwise it would be physically infeasible to store it.
 
-If you attempt to store this hypercube in a ROLAP database, you'll quickly reach limits: 811 dimension tables, and a central table with 811 columns -- with plenty of empty cells. Worse: if you want to now go ahead and import all filings, not only will be cumbersome to create new tables and migrate the central one, but this will make explode your SQL database.
+If you attempt to store this hypercube in a ROLAP database, you'll quickly reach limits: 800 dimension tables, and a central table with 800+ columns -- with plenty of empty cells: 99.5% of empty cells. Worse: if you want to now go ahead and import all filings, not only will be cumbersome to create new tables and migrate the central one, but this will make explode your SQL database.
 
 ### NoSQL is a perfect fit for sparseness
 
