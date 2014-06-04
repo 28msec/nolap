@@ -2,7 +2,7 @@
 
 This document introduces NoLAP by beginning with how competitors deal with XBRL data, like filings of US companies to the SEC, shows the limits of traditional approaches, and shows why and how NoLAP goes beyond these limits.
 
-Let's take a skyscraper's elevator. It's worth it.
+Let's take a skyscraper's elevator for 5 minutes. It's worth it.
 
 ## Components, tables, Excel and OLAP
 
