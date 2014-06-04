@@ -1,7 +1,7 @@
 # 28msec Competitive Advantages
 
-## Business Spreadsheets The Entire Universe Won't Fit In
-Everybody loves Excel. Tables are so nice to use and easy to understand.
+## Business Spreadsheets The Universe Won't Fit In
+Everybody loves Excel. Tables are so nice and easy to use and understand.
 But real-life data is more complex than a dense, flat table.
 We support sparse, highly-dimensional spreadsheets with more cells than atoms in the visible universe.
 
@@ -10,8 +10,7 @@ The look-and-feel of our spreadsheets is a familiar, Excel-like interface. We ar
 is our job. Concentrate on what you want, not on how you can get it.
 
 ## Know Faster Than The Market
-Fiscal reports filed, say, to the SEC -- all companies, all times? Just another big spreadsheet for us. Build your own views, add your formulas in
-no time. Easily compare across filings and get valuable knowledge faster than others.
+Fiscal reports filed, say, to the SEC -- all companies, all times? Just another big spreadsheet for us. Build your own views, add your formulas in no time. Easily compare across filings and get valuable knowledge faster than others.
 
 ## We Follow Standards
 You're free to go and take your data somewhere else, any time. Our technology is compliant with the global XBRL standard.
