@@ -11,6 +11,10 @@ Typically:
 - one of the dimensions is the name of the reported concept (assets, revenues, etc) and there's 1 to 100 of them.
 - another is the period, there are typically 1 to 4 of them.
 
+|          | 2013 | 2014 |
+| Assets   |  1B$ | 2B$  |
+| Revenues |  1M$ | 2M$  |
+
 You can quickly calculate that, hence, a component's table typically has between 1 and 400 cells. Let's say 4,000 to account
 for one or two extra dimensions.
 
