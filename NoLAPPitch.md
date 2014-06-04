@@ -29,7 +29,7 @@ for one or two extra dimensions.
 Each one of these components can be exported in a csv format like so
 
 | Concept     | Period | Value | Unit |
-|---------===-|--------|-------|------|
+|-------------|--------|-------|------|
 | Assets      | 2013   | 2     | B$   |
 | Assets      | 2014   | 4     | B$   |
 | Liabilities | 2013   | 1     | B$   |
