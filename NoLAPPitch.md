@@ -73,7 +73,7 @@ you have 811 dimensions, and in average each of these has 38 values (by the way,
 
 By orders of magnitude more than atoms in the universe. Of course, this hypercube is extremely sparse -- otherwise it would be physically infeasible to store it.
 
-If you attempt to store this hypercube in a ROLAP database, you'll quickly reach limits: 800 dimension tables, and a central table with 800+ columns -- with plenty of empty cells: 99.5% of empty cells. Worse: if you want to now go ahead and import all filings, not only will it be cumbersome to create new tables and migrate the central one, but this will make your SQL database explode.
+If you attempt to store this hypercube in a ROLAP database, you'll quickly reach limits: 800 dimension tables, and a central table with 800+ columns -- even if you only store the filled cells, that's still 99% of SQL NULLs for unused dimensions. Worse: if you want to now go ahead and import all filings, not only will it be cumbersome to create new tables and migrate the central one, but this will make your SQL database explode.
 
 ### NoSQL is a perfect fit for sparseness
 
