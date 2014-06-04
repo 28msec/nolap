@@ -12,6 +12,7 @@ Typically:
 - another is the period, there are typically 1 to 4 of them.
 
 |          | 2013 | 2014 |
+|----------|------|------|
 | Assets   |  1B$ | 2B$  |
 | Revenues |  1M$ | 2M$  |
 
